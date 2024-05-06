@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underepth Files</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Underepth Storage:</h1> <button id="refreshBu">Reload</button>
+        <ul id="file-list"></ul>
+    
+        <!-- Include Firebase SDK -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    
+        <script>
+            // Initialize Firebase (replace with your Firebase project configuration)
+            const firebaseConfig = {
+        apiKey: "AIzaSyAS7vqBTwptXgVIqjL7Y8L2RDA-svvtB1A",
+        authDomain: "underepth1.firebaseapp.com",
+        databaseURL: "https://underepth1-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "underepth1",
+        storageBucket: "underepth1.appspot.com",
+        messagingSenderId: "368937353141",
+        appId: "1:368937353141:web:f8a4305f5fb0d17c8023fc",
+        measurementId: "G-ZQ224BCB9X"
+            };
+            firebase.initializeApp(firebaseConfig);
+    
+            // Get a reference to the storage service, which is used to create references in your storage bucket
+            const storage = firebase.storage();
+    
+            // Create a reference to the storage root
+            const storageRef = storage.ref();
+    
+            // Get a list of files in storage
+            storageRef.listAll().then((res) => {
+                const fileList = document.getElementById('file-list');
+                res.items.forEach((itemRef) => {
+                    // For each file, create a list item, display its name, and add a download button
+                    const li = document.createElement('li');
+                    li.textContent = itemRef.name;
+                    const downloadButton = document.createElement('button');
+                    downloadButton.textContent = 'Download';
+                    downloadButton.onclick = function() {
+                        itemRef.getDownloadURL().then((url) => {
+                            // Create a temporary anchor element to trigger the download
+                            const link = document.createElement('a');
+                            link.href = url;
+                            link.download = itemRef.name;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        }).catch((error) => {
+                            console.error('Error getting download URL:', error);
+                        });
+                    };
+                    li.appendChild(downloadButton);
+                    fileList.appendChild(li);
+                });
+            }).catch((error) => {
+                console.error('Error retrieving files:', error);
+            });
+        </script>
+    
+        <button id="UUpload1">Upload Music</button>
+        <script>
+            var submit = document.getElementById("UUpload1");
+            submit.addEventListener('click', function() {
+                window.location.href = 'upload.html'
+            });
+            document.getElementById("refreshBu").addEventListener('click', function() {
+                location.reload();
+            })
+            
+        </script>
+    </div>
+
+</body>
+</html>

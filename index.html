@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="titleEpth">
+        <pre>
+            ##     ## ##    ## ########  ######## ########  ######## ########  ######## ##     ## 
+            ##     ## ###   ## ##     ## ##       ##     ## ##       ##     ##    ##    ##     ## 
+            ##     ## ####  ## ##     ## ##       ##     ## ##       ##     ##    ##    ##     ## 
+            ##     ## ## ## ## ##     ## ######   ########  ######   ########     ##    ######### 
+            ##     ## ##  #### ##     ## ##       ##   ##   ##       ##           ##    ##     ## 
+            ##     ## ##   ### ##     ## ##       ##    ##  ##       ##           ##    ##     ## 
+             #######  ##    ## ########  ######## ##     ## ######## ##           ##    ##     ## 
+        </pre>
+        <p>we love music.</p>
+    </div>
+    <div id="register-container">
+        <h2>Register</h2>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button id="register-btn">Register</button>
+    </div>
+    <button id="loginWant">Login?</button>
+    <script>
+        var Ub1 = document.getElementById('loginWant')
+        Ub1.addEventListener('click', function() {
+            window.location.href = "login.html"; // Corrected line: '=' instead of '()'
+        });
+    </script>
+    <script src="js/register.js" type="module" defer></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underepth Upload</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h2>Upload to Underepth Storage</h2>
+    <form id="upload-form">
+        <input type="file" id="file-input" accept="*"> <!-- Accepts any file type -->
+        <button type="submit">Upload</button>
+    </form>
+    <progress id="upload-progress" value="0" max="100"></progress> <!-- Progress bar -->
+
+    <!-- Include Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <script>
+        // Initialize Firebase (replace with your Firebase project configuration)
+        const firebaseConfig = {
+    apiKey: "AIzaSyAS7vqBTwptXgVIqjL7Y8L2RDA-svvtB1A",
+    authDomain: "underepth1.firebaseapp.com",
+    databaseURL: "https://u nderepth1-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "underepth1",
+    storageBucket: "underepth1.appspot.com",
+    messagingSenderId: "368937353141",
+    appId: "1:368937353141:web:f8a4305f5fb0d17c8023fc",
+    measurementId: "G-ZQ224BCB9X"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // Get a reference to the storage service, which is used to create references in your storage bucket
+        const storage = firebase.storage();
+
+        // Get a reference to the default storage bucket
+        const storageRef = storage.ref();
+        const form = document.getElementById('upload-form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    const fileInput = document.getElementById('file-input');
+    const file = fileInput.files[0]; // Get the selected file
+
+    if (file) {
+        // Upload the file to Firebase Storage
+        const uploadTask = storageRef.child(file.name).put(file);
+
+        // Monitor upload progress
+        const progressBar = document.getElementById('upload-progress');
+        uploadTask.on('state_changed',
+            function(snapshot) {
+                // Handle progress
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                progressBar.value = progress;
+            },
+            function(error) {
+                // Handle unsuccessful uploads
+                console.error('Upload failed:', error);
+            },
+            function() {
+                // Handle successful uploads on complete
+                console.log('Upload successful');
+            }
+        );
+    } else {
+        console.error('No file selected');
+    }
+});
+    </script>
+</body>
+</html>
+
+
