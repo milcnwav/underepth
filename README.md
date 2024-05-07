@@ -15,5 +15,5 @@
 
 ## :star2: About the Project
 <details> <summary>Database</summary> <ul>
-<li><a href="firebase.com">Firebase</a></li>
+<li><a href="https://www.firebase.com">Firebase</a></li>
 </ul> </details>
