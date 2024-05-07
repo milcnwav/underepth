@@ -17,11 +17,3 @@
 <details> <summary>Database</summary> <ul>
 <li><a href="firebase.com">Firebase</a></li>
 </ul> </details>
-
-### :art: Color Reference
-| Color | Hex |
-| --------------- | ---------------------------------------------------------------- |
-| Primary Color | ![#030103](https://via.placeholder.com/10/030103?text=+) #030103 |
-| Secondary Color | ![#393E46](https://via.placeholder.com/10/393E46?text=+) #393E46 |
-| Accent Color | ![#00ADB5](https://via.placeholder.com/10/00ADB5?text=+) #00ADB5 |
-| Text Color | ![#EEEEEE](https://via.placeholder.com/10/EEEEEE?text=+) #EEEEEE |
