@@ -38,10 +38,12 @@ button {
     border: none;
     cursor: pointer;
     margin-left: 40px;
+    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #0f0; /* Dark green on hover */
+    background-color: rgba(9, 117, 9, 0.431); /* Dark green on hover */
+    color: white;
 }
 
 

@@ -12,8 +12,16 @@
 <body>
     <div class="container">
         <h1>Underepth Storage:</h1> <button id="refreshBu">Reload</button>
+        <div>
+            <button id="goToRhyming">Lyrics</button>
+        </div>
+        <script>
+            document.getElementById('goToRhyming').addEventListener('click', function(){
+                window.location.href = 'lyrics.html'
+            });
+        </script>
         <ul id="file-list"></ul>
-    
+        
         <!-- Include Firebase SDK -->
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
